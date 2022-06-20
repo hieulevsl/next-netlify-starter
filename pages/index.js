@@ -1,6 +1,8 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import Head from 'next/head';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
+import React from 'react';
+import ReactPlayer from 'react-player';
 
 export default function Home() {
   return (
@@ -12,12 +14,21 @@ export default function Home() {
 
       <main>
         <Header title="Welcome to my app!" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <div className="description">
+          <ReactPlayer
+            controls={true}
+            playing={true}
+            url="http://live.vnrc.vn:1935/live/TMEC/playlist.m3u8"
+            config={{
+              file: {
+                forceHLS: true,
+              },
+            }}
+          />
+        </div>
       </main>
 
       <Footer />
     </div>
-  )
+  );
 }
